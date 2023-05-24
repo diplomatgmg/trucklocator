@@ -1,0 +1,30 @@
+services:
+  trucklocator:
+    build: .
+    volumes:
+      - ./:/usr/src/trucklocator/
+    ports:
+      - 8000:8000
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=dbpass
+    depends_on:
+      - database
+    command: pip install -r requirements.txt
+
+
+  database:
+    image: postgres:14.6-alpine
+    environment:
+      - POSTGRES_DB=dbname
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpass
+
+  blackd:
+    restart: always
+    image: docker.io/pyfound/black
+    command: blackd --bind-host 0.0.0.0 --bind-port 45484
+    ports:
+      - 45484:45484
