@@ -12,6 +12,7 @@ class LocationAdmin(admin.ModelAdmin):
 @admin.register(Cargo)
 class CargoAdmin(admin.ModelAdmin):
     list_display = ("id", "pickup_location", "delivery_location", "weight")
+    list_select_related = ("pickup_location", "delivery_location")
 
 
 @admin.register(Truck)

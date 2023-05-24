@@ -1,7 +1,8 @@
 from django.core.validators import MinLengthValidator, MaxLengthValidator
+from geopy.distance import geodesic
 from rest_framework import serializers
 
-from apps.logistics.models import Cargo, Location
+from apps.logistics.models import Cargo, Location, Truck
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -11,9 +12,20 @@ class LocationSerializer(serializers.ModelSerializer):
 
 
 class CargoListSerializer(serializers.ModelSerializer):
+    pickup_location = serializers.StringRelatedField()
+    delivery_location = serializers.StringRelatedField()
+    count_nearest_trucks = serializers.SerializerMethodField()
+
     class Meta:
         model = Cargo
-        fields = "__all__"
+        fields = (
+            "pickup_location",
+            "delivery_location",
+            "count_nearest_trucks",
+        )
+
+    def get_count_nearest_trucks(self, obj):
+        return obj.nearest_trucks_count
 
 
 class CargoCreateSerializer(serializers.ModelSerializer):

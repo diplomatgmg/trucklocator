@@ -1,9 +1,10 @@
 import csv
+import random
 
 from django.db.models.signals import post_migrate, pre_save
 from django.dispatch import receiver
 
-from apps.logistics.models import Location, Truck
+from apps.logistics.models import Location, Truck, Cargo
 
 
 @receiver(post_migrate)
@@ -37,3 +38,16 @@ def set_truck_random_location(sender, instance, **kwargs):
     if not instance.location:
         random_location = Location.objects.order_by("?").first()
         instance.location = random_location
+
+
+@receiver(pre_save, sender=Cargo)
+def set_truck_random_location(sender, instance, **kwargs):
+    if (
+        not instance.pickup_location
+        and not instance.delivery_location
+        and instance.weight == 1
+    ):
+        random_pickup, random_delivery = Location.objects.order_by("?")[:2]
+        instance.pickup_location = random_pickup
+        instance.delivery_location = random_delivery
+        instance.weight = random.randint(5, 950)
