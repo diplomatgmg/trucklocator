@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.main.models import Location, Cargo, Truck
+from apps.logistics.models import Location, Cargo, Truck
 
 
 @admin.register(Location)
@@ -11,7 +11,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Cargo)
 class CargoAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "pickup_location", "delivery_location", "weight")
 
 
 @admin.register(Truck)

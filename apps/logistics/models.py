@@ -46,7 +46,7 @@ class Cargo(models.Model):
         related_name="delivery_cargo_set",
     )
     weight = models.PositiveIntegerField(
-        default=1, validators=(MinValueValidator(1), MaxValueValidator(1000))
+        _("Вес"), default=1, validators=(MinValueValidator(1), MaxValueValidator(1000))
     )
     description = models.TextField(blank=True)
 

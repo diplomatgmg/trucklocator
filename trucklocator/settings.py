@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "debug_toolbar",
     # Приложения
-    "apps.main",
+    "apps.logistics",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+FIXTURE_DIRS = [BASE_DIR / "fixtures"]
 
 WSGI_APPLICATION = "trucklocator.wsgi.application"
 

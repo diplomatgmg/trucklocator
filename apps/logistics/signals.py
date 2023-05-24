@@ -3,12 +3,12 @@ import csv
 from django.db.models.signals import post_migrate, pre_save
 from django.dispatch import receiver
 
-from apps.main.models import Location, Truck
+from apps.logistics.models import Location, Truck
 
 
 @receiver(post_migrate)
 def load_locations(sender, **kwargs):
-    if sender.name == "apps.main":
+    if sender.name == "apps.logistics":
         with open("uszips.csv", "r") as file:
             reader = csv.DictReader(file)
 
