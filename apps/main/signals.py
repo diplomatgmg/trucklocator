@@ -11,6 +11,7 @@ def load_locations(sender, **kwargs):
     if sender.name == "apps.main":
         with open("uszips.csv", "r") as file:
             reader = csv.DictReader(file)
+
             for row in reader:
                 city = row["city"]
                 state = row["state_name"]
@@ -18,11 +19,14 @@ def load_locations(sender, **kwargs):
                 latitude = row["lat"]
                 longitude = row["lng"]
 
-                Location.objects.create(
+                Location.objects.get_or_create(
                     city=city,
                     state=state,
                     zip_code=zip_code,
                     latitude=latitude,
                     longitude=longitude,
                 )
-        print("locations successfully loaded")
+
+                if reader.line_num == 3000:
+                    print("3000 locations successfully loaded")
+                    break

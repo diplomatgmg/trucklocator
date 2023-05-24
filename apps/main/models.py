@@ -1,7 +1,12 @@
 import random
 import string
 
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import (
+    MinValueValidator,
+    MaxValueValidator,
+    MinLengthValidator,
+    MaxLengthValidator,
+)
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -9,7 +14,11 @@ from django.utils.translation import gettext as _
 class Location(models.Model):
     city = models.CharField(_("Город"), max_length=100)
     state = models.CharField(_("Штат"), max_length=100)
-    zip_code = models.CharField(_("Почтовый индекс"), max_length=5)
+    zip_code = models.CharField(
+        _("Почтовый индекс"),
+        unique=True,
+        validators=(MinLengthValidator(5), MaxLengthValidator(5)),
+    )
     latitude = models.FloatField(_("Географическая широта"))
     longitude = models.FloatField(_("Географическая долгота"))
 
@@ -39,7 +48,7 @@ class Cargo(models.Model):
     weight = models.PositiveIntegerField(
         default=1, validators=(MinValueValidator(1), MaxValueValidator(1000))
     )
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return f"Cargo #{self.pk}"
