@@ -8,7 +8,7 @@ from django.core.validators import (
     MaxLengthValidator,
 )
 from django.db import models
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class Location(models.Model):
@@ -23,7 +23,7 @@ class Location(models.Model):
     longitude = models.FloatField(_("Географическая долгота"))
 
     def __str__(self):
-        return f"Location {self.city}/{self.state}"
+        return f"{self.city}/{self.state}"
 
     class Meta:
         verbose_name = _("Локация")
@@ -66,7 +66,7 @@ def generate_truck_number():
 
 
 class Truck(models.Model):
-    location = models.ForeignKey(Location, models.SET_NULL, null=True)
+    location = models.ForeignKey(Location, models.SET_NULL, null=True, blank=True)
     load_capacity = models.PositiveIntegerField(
         default=1, validators=(MinValueValidator(1), MaxValueValidator(1000))
     )
@@ -74,7 +74,7 @@ class Truck(models.Model):
     number = models.CharField(max_length=5, unique=True, default=generate_truck_number)
 
     def __str__(self):
-        return self.number
+        return f"{self.number} - {self.location}"
 
     class Meta:
         verbose_name = _("Грузовик")

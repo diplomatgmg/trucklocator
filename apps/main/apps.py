@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from django.db.models.signals import post_migrate, pre_save
 
 
 class MainConfig(AppConfig):
@@ -6,4 +7,9 @@ class MainConfig(AppConfig):
     name = "apps.main"
 
     def ready(self):
-        import apps.main.signals
+        from apps.main.signals import load_locations, set_truck_random_location
+        from apps.main.models import Truck
+
+        post_migrate.connect(load_locations)
+        pre_save.connect(set_truck_random_location, sender=Truck)
+        print("pre save connected")
