@@ -1,0 +1,613 @@
+[
+  {
+    "model": "logistics.cargo",
+    "pk": 11,
+    "fields": {
+      "pickup_location": 2430,
+      "delivery_location": 2405,
+      "weight": 231,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 12,
+    "fields": {
+      "pickup_location": 2902,
+      "delivery_location": 853,
+      "weight": 539,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 13,
+    "fields": {
+      "pickup_location": 1043,
+      "delivery_location": 1469,
+      "weight": 932,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 14,
+    "fields": {
+      "pickup_location": 2126,
+      "delivery_location": 2921,
+      "weight": 741,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 15,
+    "fields": {
+      "pickup_location": 2498,
+      "delivery_location": 912,
+      "weight": 543,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 16,
+    "fields": {
+      "pickup_location": 786,
+      "delivery_location": 1327,
+      "weight": 38,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 17,
+    "fields": {
+      "pickup_location": 2037,
+      "delivery_location": 1872,
+      "weight": 755,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 18,
+    "fields": {
+      "pickup_location": 2786,
+      "delivery_location": 2457,
+      "weight": 713,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 19,
+    "fields": {
+      "pickup_location": 15,
+      "delivery_location": 1403,
+      "weight": 258,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 20,
+    "fields": {
+      "pickup_location": 1884,
+      "delivery_location": 1671,
+      "weight": 161,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 21,
+    "fields": {
+      "pickup_location": 1401,
+      "delivery_location": 219,
+      "weight": 134,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 22,
+    "fields": {
+      "pickup_location": 1427,
+      "delivery_location": 631,
+      "weight": 135,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 23,
+    "fields": {
+      "pickup_location": 1259,
+      "delivery_location": 2305,
+      "weight": 451,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 24,
+    "fields": {
+      "pickup_location": 423,
+      "delivery_location": 1691,
+      "weight": 449,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 25,
+    "fields": {
+      "pickup_location": 228,
+      "delivery_location": 2162,
+      "weight": 704,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 26,
+    "fields": {
+      "pickup_location": 2799,
+      "delivery_location": 1774,
+      "weight": 831,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 27,
+    "fields": {
+      "pickup_location": 233,
+      "delivery_location": 1037,
+      "weight": 898,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 28,
+    "fields": {
+      "pickup_location": 2295,
+      "delivery_location": 323,
+      "weight": 349,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 29,
+    "fields": {
+      "pickup_location": 236,
+      "delivery_location": 2796,
+      "weight": 477,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 30,
+    "fields": {
+      "pickup_location": 1358,
+      "delivery_location": 2280,
+      "weight": 341,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 31,
+    "fields": {
+      "pickup_location": 2381,
+      "delivery_location": 2206,
+      "weight": 373,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 32,
+    "fields": {
+      "pickup_location": 774,
+      "delivery_location": 2917,
+      "weight": 488,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 33,
+    "fields": {
+      "pickup_location": 184,
+      "delivery_location": 2546,
+      "weight": 666,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.cargo",
+    "pk": 34,
+    "fields": {
+      "pickup_location": 330,
+      "delivery_location": 2470,
+      "weight": 589,
+      "description": ""
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 1,
+    "fields": {
+      "location": 1468,
+      "load_capacity": 419,
+      "number": "9545L"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 2,
+    "fields": {
+      "location": 221,
+      "load_capacity": 576,
+      "number": "3378D"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 3,
+    "fields": {
+      "location": 2513,
+      "load_capacity": 524,
+      "number": "6993L"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 4,
+    "fields": {
+      "location": 520,
+      "load_capacity": 307,
+      "number": "6601Q"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 5,
+    "fields": {
+      "location": 1619,
+      "load_capacity": 716,
+      "number": "8176X"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 6,
+    "fields": {
+      "location": 508,
+      "load_capacity": 502,
+      "number": "2866E"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 7,
+    "fields": {
+      "location": 21,
+      "load_capacity": 894,
+      "number": "9928E"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 8,
+    "fields": {
+      "location": 2592,
+      "load_capacity": 624,
+      "number": "8268P"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 9,
+    "fields": {
+      "location": 1771,
+      "load_capacity": 649,
+      "number": "8220W"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 10,
+    "fields": {
+      "location": 509,
+      "load_capacity": 854,
+      "number": "1117P"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 11,
+    "fields": {
+      "location": 1583,
+      "load_capacity": 488,
+      "number": "2507D"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 12,
+    "fields": {
+      "location": 602,
+      "load_capacity": 807,
+      "number": "8933O"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 13,
+    "fields": {
+      "location": 237,
+      "load_capacity": 905,
+      "number": "1781X"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 14,
+    "fields": {
+      "location": 92,
+      "load_capacity": 542,
+      "number": "4386M"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 15,
+    "fields": {
+      "location": 2360,
+      "load_capacity": 919,
+      "number": "3893E"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 16,
+    "fields": {
+      "location": 1596,
+      "load_capacity": 269,
+      "number": "8661G"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 17,
+    "fields": {
+      "location": 206,
+      "load_capacity": 590,
+      "number": "7928M"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 18,
+    "fields": {
+      "location": 1379,
+      "load_capacity": 197,
+      "number": "5255Z"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 19,
+    "fields": {
+      "location": 1556,
+      "load_capacity": 900,
+      "number": "8661F"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 20,
+    "fields": {
+      "location": 236,
+      "load_capacity": 77,
+      "number": "7444Q"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 21,
+    "fields": {
+      "location": 393,
+      "load_capacity": 318,
+      "number": "6444V"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 22,
+    "fields": {
+      "location": 1340,
+      "load_capacity": 336,
+      "number": "7957D"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 23,
+    "fields": {
+      "location": 148,
+      "load_capacity": 629,
+      "number": "1954Y"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 24,
+    "fields": {
+      "location": 1543,
+      "load_capacity": 49,
+      "number": "3444F"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 25,
+    "fields": {
+      "location": 2722,
+      "load_capacity": 287,
+      "number": "6705E"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 26,
+    "fields": {
+      "location": 2232,
+      "load_capacity": 590,
+      "number": "5729H"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 27,
+    "fields": {
+      "location": 1527,
+      "load_capacity": 415,
+      "number": "5475L"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 28,
+    "fields": {
+      "location": 1698,
+      "load_capacity": 545,
+      "number": "8893D"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 29,
+    "fields": {
+      "location": 57,
+      "load_capacity": 31,
+      "number": "4046V"
+    }
+  },
+  {
+    "model": "logistics.truck",
+    "pk": 30,
+    "fields": {
+      "location": 624,
+      "load_capacity": 946,
+      "number": "1337J"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$7RwQqXfmoxlGnCQd95sMBN$Tngc5i0nWWkwex73Bj9nptIzLCMScSPOW+iIUQYb9lI=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-05-25T17:29:47.927Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "django_celery_beat.intervalschedule",
+    "pk": 2,
+    "fields": {
+      "every": 3,
+      "period": "minutes"
+    }
+  },
+  {
+    "model": "django_celery_beat.crontabschedule",
+    "pk": 1,
+    "fields": {
+      "minute": "0",
+      "hour": "4",
+      "day_of_week": "*",
+      "day_of_month": "*",
+      "month_of_year": "*",
+      "timezone": "UTC"
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictasks",
+    "pk": 1,
+    "fields": {
+      "last_update": "2023-05-25T17:37:00.252Z"
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictask",
+    "pk": 1,
+    "fields": {
+      "name": "celery.backend_cleanup",
+      "task": "celery.backend_cleanup",
+      "interval": null,
+      "crontab": 1,
+      "solar": null,
+      "clocked": null,
+      "args": "[]",
+      "kwargs": "{}",
+      "queue": null,
+      "exchange": null,
+      "routing_key": null,
+      "headers": "{}",
+      "priority": null,
+      "expires": null,
+      "expire_seconds": 43200,
+      "one_off": false,
+      "start_time": null,
+      "enabled": true,
+      "last_run_at": null,
+      "total_run_count": 0,
+      "date_changed": "2023-05-25T17:27:34.344Z",
+      "description": ""
+    }
+  },
+  {
+    "model": "django_celery_beat.periodictask",
+    "pk": 3,
+    "fields": {
+      "name": "random_truck_location",
+      "task": "apps.logistics.tasks.update_truck_locations",
+      "interval": 2,
+      "crontab": null,
+      "solar": null,
+      "clocked": null,
+      "args": "[]",
+      "kwargs": "{}",
+      "queue": null,
+      "exchange": null,
+      "routing_key": null,
+      "headers": "{}",
+      "priority": null,
+      "expires": null,
+      "expire_seconds": null,
+      "one_off": false,
+      "start_time": null,
+      "enabled": true,
+      "last_run_at": null,
+      "total_run_count": 0,
+      "date_changed": "2023-05-25T17:37:00.250Z",
+      "description": ""
+    }
+  }
+]
