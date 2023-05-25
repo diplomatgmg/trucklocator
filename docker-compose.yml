@@ -1,10 +1,13 @@
+version: '3'
+
 services:
   trucklocator:
-    build: .
+    build:
+      context: .
     volumes:
       - ./:/usr/src/trucklocator/
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
       - DB_HOST=database
       - DB_NAME=dbname
@@ -12,8 +15,9 @@ services:
       - DB_PASS=dbpass
     depends_on:
       - database
-    command: pip install -r requirements.txt
-
+      - redis
+      - celery
+    command: "python manage.py makemigrations && python manage.py migrate && python manage.py loaddata cargos trucks"
 
   database:
     image: postgres:14.6-alpine
@@ -21,15 +25,20 @@ services:
       - POSTGRES_DB=dbname
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=dbpass
+    expose:
+      - 5432
 
   redis:
+    restart: unless-stopped
     image: redis:7.0.10-alpine
     hostname: redis
+    expose:
+      - 6379
 
   celery:
     build:
       context: .
-    command: celery -A trucklocator.celery.app worker -l info
+    command: "celery -A trucklocator.celery.app worker -l info && celery -A trucklocator.celery.app beat -l info"
     volumes:
       - ./:/usr/src/trucklocator/
     depends_on:
@@ -40,6 +49,27 @@ services:
       - DB_NAME=dbname
       - DB_USER=dbuser
       - DB_PASS=dbpass
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+
+  celery-beats:
+    restart: always
+    build:
+      context: .
+    volumes:
+      - ./:/usr/src/trucklocator/
+    command: "celery -A trucklocator beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=dbpass
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - database
+      - celery
+
 
   flower:
     build:
@@ -55,6 +85,6 @@ services:
   blackd:
     restart: always
     image: docker.io/pyfound/black
-    command: blackd --bind-host 0.0.0.0 --bind-port 45484
+    command: "blackd --bind-host 0.0.0.0 --bind-port 45484"
     ports:
-      - 45484:45484
+      - "45484:45484"

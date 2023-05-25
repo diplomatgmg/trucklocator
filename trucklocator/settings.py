@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Библиотеки
     "rest_framework",
     "debug_toolbar",
+    "django_celery_beat",
     # Приложения
     "apps.logistics",
 ]
@@ -137,16 +138,22 @@ if DEBUG:
         "10.0.2.2",
     ]
 
-
-
 CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://redis:6379',
-        'OPTIONS': {
-            'db': '1',
-        }
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "db": "1",
+        },
     }
+}
+
+CELERY_BEAT_SCHEDULE = {
+    "update_truck_locations": {
+        "task": "apps.logistics.tasks.update_truck_locations",
+        "schedule": 10,
+    },
 }
