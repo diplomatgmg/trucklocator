@@ -1,10 +1,28 @@
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.utils.translation import gettext_lazy as _
 from geopy.distance import geodesic
 from rest_framework import serializers
 
-from apps.logistics.models import Cargo, Location, Truck
+from apps.logistics.models import Cargo, Truck
+from apps.logistics.services import get_location_by_zip
+
+
+class TruckSerializer(serializers.ModelSerializer):
+    location_zip = serializers.CharField(
+        validators=(MinLengthValidator(5), MaxLengthValidator(5)),
+        label=_("Почтовый индекс"),
+        source='location'
+    )
+
+    class Meta:
+        model = Truck
+        fields = ("location_zip",)
+
+    def update(self, instance, validated_data):
+        location = get_location_by_zip(validated_data['location'])
+        instance.location = location
+        instance.save()
+        return instance
 
 
 class BaseCargoSerializer(serializers.ModelSerializer):
@@ -105,16 +123,10 @@ class CargoCreateSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        try:
-            pickup_location_zip = Location.objects.get(
-                zip_code=validated_data["pickup_location_zip"]
-            )
-            delivery_location_zip = Location.objects.get(
-                zip_code=validated_data["delivery_location_zip"]
-            )
-
-        except ObjectDoesNotExist:
-            raise serializers.ValidationError(_("Введён неверный почтовый индекс"))
+        pickup_location_zip = get_location_by_zip(validated_data["pickup_location_zip"])
+        delivery_location_zip = get_location_by_zip(
+            validated_data["delivery_location_zip"]
+        )
 
         cargo = Cargo(
             pickup_location=pickup_location_zip,

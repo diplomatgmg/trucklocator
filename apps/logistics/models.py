@@ -52,7 +52,7 @@ class Cargo(models.Model):
     weight = models.PositiveIntegerField(
         _("Вес"), default=1, validators=(MinValueValidator(1), MaxValueValidator(1000))
     )
-    description = models.TextField(blank=True)
+    description = models.TextField(_("Описание"), blank=True)
 
     def __str__(self):
         return f"Cargo #{self.pk}"

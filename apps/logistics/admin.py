@@ -17,6 +17,6 @@ class CargoAdmin(admin.ModelAdmin):
 
 @admin.register(Truck)
 class TruckAdmin(admin.ModelAdmin):
-    list_display = ("number", "location", "load_capacity")
+    list_display = ("id", "number", "location", "load_capacity")
     list_select_related = ("location",)
-    search_fields = ("number", "location__city", "location__state")
+    search_fields = ("id", "number", "location__city", "location__state")

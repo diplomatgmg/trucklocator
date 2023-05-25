@@ -1,15 +1,17 @@
 from rest_framework import generics
 
-from apps.logistics.models import Cargo
+from apps.logistics.models import Cargo, Truck
 from apps.logistics.serializers import (
     CargoListSerializer,
     CargoCreateSerializer,
     CargoRetrieveUpdateDestroySerializer,
+    TruckSerializer,
 )
 
 
-class TruckListAPIView(generics.ListAPIView):
-    pass
+class TruckUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = TruckSerializer
+    queryset = Truck.objects.all()
 
 
 class CargoListAPIView(generics.ListAPIView):
