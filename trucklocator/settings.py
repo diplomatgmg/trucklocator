@@ -136,3 +136,17 @@ if DEBUG:
         "127.0.0.1",
         "10.0.2.2",
     ]
+
+
+
+CELERY_BROKER_URL = "redis://redis:6379/0"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://redis:6379',
+        'OPTIONS': {
+            'db': '1',
+        }
+    }
+}

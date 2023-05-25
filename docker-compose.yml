@@ -22,6 +22,36 @@ services:
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=dbpass
 
+  redis:
+    image: redis:7.0.10-alpine
+    hostname: redis
+
+  celery:
+    build:
+      context: .
+    command: celery -A trucklocator.celery.app worker -l info
+    volumes:
+      - ./:/usr/src/trucklocator/
+    depends_on:
+      - redis
+      - database
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=dbpass
+
+  flower:
+    build:
+      context: .
+    command: celery -A trucklocator.celery.app flower
+    volumes:
+      - ./:/usr/src/trucklocator/
+    depends_on:
+      - celery
+    ports:
+      - "5555:5555"
+
   blackd:
     restart: always
     image: docker.io/pyfound/black
