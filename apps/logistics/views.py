@@ -4,7 +4,7 @@ from apps.logistics.models import Cargo
 from apps.logistics.serializers import (
     CargoListSerializer,
     CargoCreateSerializer,
-    CargoRetrieveSerializer,
+    CargoRetrieveUpdateDestroySerializer,
 )
 
 
@@ -32,8 +32,8 @@ class CargoListAPIView(generics.ListAPIView):
         return queryset
 
 
-class CargoRetrieveAPIView(generics.RetrieveAPIView):
-    serializer_class = CargoRetrieveSerializer
+class CargoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CargoRetrieveUpdateDestroySerializer
 
     def get_queryset(self):
         queryset = (

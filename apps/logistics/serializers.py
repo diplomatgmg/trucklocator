@@ -63,7 +63,7 @@ class CargoListSerializer(BaseCargoSerializer):
         return len(self.get_nearby_trucks(obj))
 
 
-class CargoRetrieveSerializer(BaseCargoSerializer):
+class CargoRetrieveUpdateDestroySerializer(BaseCargoSerializer):
     pickup_location = serializers.SerializerMethodField()
     delivery_location = serializers.SerializerMethodField()
     trucks = serializers.SerializerMethodField()
