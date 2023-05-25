@@ -23,7 +23,7 @@ class Location(models.Model):
     )
 
     def __str__(self):
-        return f"{self.city}/{self.state}"
+        return f"Location #{self.id}"
 
     class Meta:
         verbose_name = _("Локация")
@@ -84,7 +84,7 @@ class Truck(models.Model):
     number = models.CharField(max_length=5, unique=True, default=generate_truck_number)
 
     def __str__(self):
-        return f"{self.number} - {self.location}"
+        return f"Truck #{self.id}"
 
     class Meta:
         verbose_name = _("Грузовик")
