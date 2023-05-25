@@ -12,11 +12,16 @@ class CargoListAPIView(generics.ListAPIView):
     serializer_class = CargoListSerializer
 
     def get_queryset(self):
-        queryset = Cargo.objects.all().select_related(
-            "pickup_location", "delivery_location"
+        queryset = (Cargo.objects.all().select_related("pickup_location")).only(
+            "pickup_location_id",
+            "delivery_location_id",
+            "pickup_location__latitude",
+            "pickup_location__longitude",
         )
+
         return queryset
 
 
 class CargoCreateAPIView(generics.CreateAPIView):
     serializer_class = CargoCreateSerializer
+    queryset = Cargo.objects.all()
