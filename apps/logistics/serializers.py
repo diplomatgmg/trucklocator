@@ -9,9 +9,9 @@ from apps.logistics.services import get_location_by_zip
 
 class TruckSerializer(serializers.ModelSerializer):
     location_zip = serializers.CharField(
-        validators=(MinLengthValidator(5), MaxLengthValidator(5)),
+        validators=[MinLengthValidator(5), MaxLengthValidator(5)],
         label=_("Почтовый индекс"),
-        source='location'
+        source="location",
     )
 
     class Meta:
@@ -19,7 +19,7 @@ class TruckSerializer(serializers.ModelSerializer):
         fields = ("location_zip",)
 
     def update(self, instance, validated_data):
-        location = get_location_by_zip(validated_data['location'])
+        location = get_location_by_zip(validated_data["location"])
         instance.location = location
         instance.save()
         return instance
@@ -29,7 +29,17 @@ class BaseCargoSerializer(serializers.ModelSerializer):
     _trucks = None
 
     def __init__(self, *args, **kwargs):
-        self._trucks = (
+        super().__init__(*args, **kwargs)
+        self._trucks = self.get_trucks_data()
+
+    def get_pickup_location(self, obj):
+        return f"{obj.pickup_location.city} / {obj.pickup_location.state}"
+
+    def get_delivery_location(self, obj):
+        return f"{obj.delivery_location.city} / {obj.delivery_location.state}"
+
+    def get_trucks_data(self):
+        return (
             Truck.objects.all()
             .select_related("location")
             .only(
@@ -38,13 +48,6 @@ class BaseCargoSerializer(serializers.ModelSerializer):
                 "location__longitude",
             )
         )
-        super().__init__(*args, **kwargs)
-
-    def get_pickup_location(self, obj):
-        return f"{obj.pickup_location.city} / {obj.pickup_location.state}"
-
-    def get_delivery_location(self, obj):
-        return f"{obj.delivery_location.city} / {obj.delivery_location.state}"
 
     def get_nearby_trucks(self, obj):
         cargo_coordinates = (
@@ -59,7 +62,7 @@ class BaseCargoSerializer(serializers.ModelSerializer):
             distance = geodesic(cargo_coordinates, truck_coordinates).miles
 
             if distance <= 450:
-                nearest_trucks.append([truck, distance])
+                nearest_trucks.append((truck, distance))
 
         return nearest_trucks
 
@@ -107,10 +110,10 @@ class CargoRetrieveUpdateDestroySerializer(BaseCargoSerializer):
 
 class CargoCreateSerializer(serializers.ModelSerializer):
     pickup_location_zip = serializers.CharField(
-        validators=(MinLengthValidator(5), MaxLengthValidator(5))
+        validators=[MinLengthValidator(5), MaxLengthValidator(5)]
     )
     delivery_location_zip = serializers.CharField(
-        validators=(MinLengthValidator(5), MaxLengthValidator(5))
+        validators=[MinLengthValidator(5), MaxLengthValidator(5)]
     )
 
     class Meta:
