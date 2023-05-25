@@ -1,102 +1,242 @@
 [
-  {
+{
     "model": "logistics.cargo",
-    "pk": 1,
+    "pk": 11,
     "fields": {
-      "pickup_location": 2,
-      "delivery_location": 8,
-      "weight": 234,
-      "description": ""
+        "pickup_location": 2430,
+        "delivery_location": 2405,
+        "weight": 231,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 2,
+    "pk": 12,
     "fields": {
-      "pickup_location": 17,
-      "delivery_location": 232,
-      "weight": 583,
-      "description": ""
+        "pickup_location": 2902,
+        "delivery_location": 853,
+        "weight": 539,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 3,
+    "pk": 13,
     "fields": {
-      "pickup_location": 270,
-      "delivery_location": 651,
-      "weight": 458,
-      "description": ""
+        "pickup_location": 1043,
+        "delivery_location": 1469,
+        "weight": 932,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 4,
+    "pk": 14,
     "fields": {
-      "pickup_location": 732,
-      "delivery_location": 1392,
-      "weight": 395,
-      "description": ""
+        "pickup_location": 2126,
+        "delivery_location": 2921,
+        "weight": 741,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 5,
+    "pk": 15,
     "fields": {
-      "pickup_location": 1820,
-      "delivery_location": 1806,
-      "weight": 59,
-      "description": ""
+        "pickup_location": 2498,
+        "delivery_location": 912,
+        "weight": 543,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 6,
+    "pk": 16,
     "fields": {
-      "pickup_location": 1457,
-      "delivery_location": 1491,
-      "weight": 561,
-      "description": ""
+        "pickup_location": 786,
+        "delivery_location": 1327,
+        "weight": 38,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 7,
+    "pk": 17,
     "fields": {
-      "pickup_location": 2965,
-      "delivery_location": 2782,
-      "weight": 159,
-      "description": ""
+        "pickup_location": 2037,
+        "delivery_location": 1872,
+        "weight": 755,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 8,
+    "pk": 18,
     "fields": {
-      "pickup_location": 2998,
-      "delivery_location": 4,
-      "weight": 164,
-      "description": ""
+        "pickup_location": 2786,
+        "delivery_location": 2457,
+        "weight": 713,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 9,
+    "pk": 19,
     "fields": {
-      "pickup_location": 297,
-      "delivery_location": 1486,
-      "weight": 219,
-      "description": ""
+        "pickup_location": 15,
+        "delivery_location": 1403,
+        "weight": 258,
+        "description": ""
     }
-  },
-  {
+},
+{
     "model": "logistics.cargo",
-    "pk": 10,
+    "pk": 20,
     "fields": {
-      "pickup_location": 297,
-      "delivery_location": 1486,
-      "weight": 219,
-      "description": ""
+        "pickup_location": 1884,
+        "delivery_location": 1671,
+        "weight": 161,
+        "description": ""
     }
-  }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 21,
+    "fields": {
+        "pickup_location": 1401,
+        "delivery_location": 219,
+        "weight": 134,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 22,
+    "fields": {
+        "pickup_location": 1427,
+        "delivery_location": 631,
+        "weight": 135,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 23,
+    "fields": {
+        "pickup_location": 1259,
+        "delivery_location": 2305,
+        "weight": 451,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 24,
+    "fields": {
+        "pickup_location": 423,
+        "delivery_location": 1691,
+        "weight": 449,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 25,
+    "fields": {
+        "pickup_location": 228,
+        "delivery_location": 2162,
+        "weight": 704,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 26,
+    "fields": {
+        "pickup_location": 2799,
+        "delivery_location": 1774,
+        "weight": 831,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 27,
+    "fields": {
+        "pickup_location": 233,
+        "delivery_location": 1037,
+        "weight": 898,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 28,
+    "fields": {
+        "pickup_location": 2295,
+        "delivery_location": 323,
+        "weight": 349,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 29,
+    "fields": {
+        "pickup_location": 236,
+        "delivery_location": 2796,
+        "weight": 477,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 30,
+    "fields": {
+        "pickup_location": 1358,
+        "delivery_location": 2280,
+        "weight": 341,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 31,
+    "fields": {
+        "pickup_location": 2381,
+        "delivery_location": 2206,
+        "weight": 373,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 32,
+    "fields": {
+        "pickup_location": 774,
+        "delivery_location": 2917,
+        "weight": 488,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 33,
+    "fields": {
+        "pickup_location": 184,
+        "delivery_location": 2546,
+        "weight": 666,
+        "description": ""
+    }
+},
+{
+    "model": "logistics.cargo",
+    "pk": 34,
+    "fields": {
+        "pickup_location": 330,
+        "delivery_location": 2470,
+        "weight": 589,
+        "description": ""
+    }
+}
 ]
