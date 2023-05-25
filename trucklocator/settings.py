@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "debug_toolbar",
     "django_celery_beat",
+    'django_filters',
     # Приложения
     "apps.logistics",
 ]
@@ -156,4 +157,9 @@ CELERY_BEAT_SCHEDULE = {
         "task": "apps.logistics.tasks.update_truck_locations",
         "schedule": 10,
     },
+}
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }

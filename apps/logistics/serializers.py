@@ -59,7 +59,7 @@ class BaseCargoSerializer(serializers.ModelSerializer):
 
         for truck in self._trucks:
             truck_coordinates = (truck.location.latitude, truck.location.longitude)
-            distance = geodesic(cargo_coordinates, truck_coordinates).miles
+            distance = round(geodesic(cargo_coordinates, truck_coordinates).miles, 2)
 
             if distance <= 450:
                 nearest_trucks.append((truck, distance))
@@ -68,9 +68,10 @@ class BaseCargoSerializer(serializers.ModelSerializer):
 
 
 class CargoListSerializer(BaseCargoSerializer):
-    number_nearby_trucks = serializers.SerializerMethodField()
     pickup_location = serializers.SerializerMethodField()
     delivery_location = serializers.SerializerMethodField()
+    number_nearby_trucks = serializers.SerializerMethodField()
+    distance_to_trucks = serializers.SerializerMethodField()
 
     class Meta:
         model = Cargo
@@ -78,10 +79,32 @@ class CargoListSerializer(BaseCargoSerializer):
             "pickup_location",
             "delivery_location",
             "number_nearby_trucks",
+            "distance_to_trucks",
         )
 
     def get_number_nearby_trucks(self, obj):
-        return len(self.get_nearby_trucks(obj))
+        trucks = self.get_nearby_trucks(obj)
+        return len(trucks)
+
+    def get_distance_to_trucks(self, obj):
+        distance_to_trucks = [distance for _, distance in self.get_nearby_trucks(obj)]
+        min_distance = self.context["request"].query_params.get(
+            "min_distance_to_trucks", 0
+        )
+        max_distance = self.context["request"].query_params.get(
+            "max_distance_to_trucks", 1000
+        )
+
+        if min_distance or max_distance:
+            filtered_distance_to_trucks = [
+                distance
+                for distance in distance_to_trucks
+                if float(min_distance) <= distance <= float(max_distance)
+            ]
+        else:
+            filtered_distance_to_trucks = distance_to_trucks
+
+        return filtered_distance_to_trucks
 
 
 class CargoRetrieveUpdateDestroySerializer(BaseCargoSerializer):
@@ -103,8 +126,7 @@ class CargoRetrieveUpdateDestroySerializer(BaseCargoSerializer):
         trucks = self.get_nearby_trucks(obj)
 
         return [
-            {"number": truck.number, "distance": round(distance, 2)}
-            for truck, distance in trucks
+            {"number": truck.number, "distance": distance} for truck, distance in trucks
         ]
 
 

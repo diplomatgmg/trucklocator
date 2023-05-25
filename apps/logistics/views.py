@@ -1,5 +1,6 @@
 from rest_framework import generics
 
+from apps.logistics.filters import CargoFilter
 from apps.logistics.models import Cargo, Truck
 from apps.logistics.serializers import (
     CargoListSerializer,
@@ -16,6 +17,7 @@ class TruckUpdateAPIView(generics.UpdateAPIView):
 
 class CargoListAPIView(generics.ListAPIView):
     serializer_class = CargoListSerializer
+    filterset_class = CargoFilter
 
     def get_queryset(self):
         queryset = (
