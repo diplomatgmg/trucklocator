@@ -78,6 +78,7 @@ class CargoListSerializer(BaseCargoSerializer):
         fields = (
             "pickup_location",
             "delivery_location",
+            'weight',
             "number_nearby_trucks",
             "distance_to_trucks",
         )
@@ -88,21 +89,17 @@ class CargoListSerializer(BaseCargoSerializer):
 
     def get_distance_to_trucks(self, obj):
         distance_to_trucks = [distance for _, distance in self.get_nearby_trucks(obj)]
-        min_distance = self.context["request"].query_params.get(
-            "min_distance_to_trucks", 0
-        )
-        max_distance = self.context["request"].query_params.get(
-            "max_distance_to_trucks", 1000
-        )
+        min_distance_param = self.context["request"].query_params.get("min_distance_to_trucks", "0")
+        max_distance_param = self.context["request"].query_params.get("max_distance_to_trucks", "1000")
 
-        if min_distance or max_distance:
-            filtered_distance_to_trucks = [
-                distance
-                for distance in distance_to_trucks
-                if float(min_distance) <= distance <= float(max_distance)
-            ]
-        else:
-            filtered_distance_to_trucks = distance_to_trucks
+        min_distance = float(min_distance_param) if min_distance_param else 0
+        max_distance = float(max_distance_param) if max_distance_param else 1000
+
+        filtered_distance_to_trucks = [
+            distance
+            for distance in distance_to_trucks
+            if min_distance <= distance <= max_distance
+        ]
 
         return filtered_distance_to_trucks
 
