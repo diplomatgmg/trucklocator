@@ -128,26 +128,26 @@ class CargoRetrieveUpdateDestroySerializer(BaseCargoSerializer):
 
 
 class CargoCreateSerializer(serializers.ModelSerializer):
-    pickup_location_zip = serializers.CharField(
+    pickup_location = serializers.CharField(
         validators=[MinLengthValidator(5), MaxLengthValidator(5)]
     )
-    delivery_location_zip = serializers.CharField(
+    delivery_location = serializers.CharField(
         validators=[MinLengthValidator(5), MaxLengthValidator(5)]
     )
 
     class Meta:
         model = Cargo
         fields = (
-            "pickup_location_zip",
-            "delivery_location_zip",
+            "pickup_location",
+            "delivery_location",
             "weight",
             "description",
         )
 
     def create(self, validated_data):
-        pickup_location_zip = get_location_by_zip(validated_data["pickup_location_zip"])
+        pickup_location_zip = get_location_by_zip(validated_data["pickup_location"])
         delivery_location_zip = get_location_by_zip(
-            validated_data["delivery_location_zip"]
+            validated_data["delivery_location"]
         )
 
         cargo = Cargo(
