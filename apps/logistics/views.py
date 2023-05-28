@@ -30,6 +30,7 @@ class CargoListAPIView(generics.ListAPIView):
                 "pickup_location__state",
                 "delivery_location__city",
                 "delivery_location__state",
+                "weight",
             )
         )
 
